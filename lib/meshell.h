@@ -4,10 +4,12 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-// global macros
-#define EXIT_FAIL -1
-#define EXIT_SUCCESS 0
+#include <iostream>
+#include <vector>
+
+using namespace std;
 
 // utilities.cpp
 int cmd_loop();
-char* getNotNULLString(int num, ...);
+string getNotNULLString(int num, ...);
+int execute_cmd(string cmd);
