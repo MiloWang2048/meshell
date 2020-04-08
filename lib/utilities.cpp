@@ -1,6 +1,6 @@
 #include "meshell.h"
 
-char* getNotNULLString(int num, ...) {
+string getNotNULLString(int num, ...) {
   va_list valist;
   int i;
   va_start(valist, num);
@@ -11,5 +11,5 @@ char* getNotNULLString(int num, ...) {
       break;
   }
   va_end(valist);
-  return val;
+  return string(val);
 }
