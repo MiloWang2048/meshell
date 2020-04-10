@@ -11,5 +11,5 @@ string getNotNULLString(int num, ...) {
       break;
   }
   va_end(valist);
-  return string(val);
+  return val ? string(val) : "NULL";
 }
