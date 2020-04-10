@@ -37,3 +37,5 @@ make
 - [ ] batch file support
 - [ ] I/O redirection
 - [ ] background execution
+- [ ] cmd history
+- [ ] signal intercept

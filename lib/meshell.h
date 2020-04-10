@@ -21,16 +21,20 @@ typedef struct MeshConfig {
 enum MeshStatus {
   RETURN_SUCCESS,
   RETURN_FAIL,
-  SIGNAL_EXIT,
+  SIGNAL_EXIT
+};
+enum CommandStatus {
   CMD_CAPTURED,
-	CMD_FALLTHROUGH
+  CMD_FALLTHROUGH
 };
 
 // aliases
-typedef vector<string> Args;
+typedef vector<string>
+    Args;
 
 // utilities
 string getNotNULLString(int num, ...);
+char getch(void);
 
 // life cycle
 MeshStatus cmd_loop(MeshConfig* config);
@@ -38,4 +42,4 @@ MeshStatus execute_cmd(MeshConfig* config, string cmd);
 MeshStatus loadConfig(MeshConfig* config);
 
 // built in commands
-MeshStatus built_in_cmds(MeshConfig* config, Args args);
+CommandStatus built_in_cmds(MeshConfig* config, Args args);

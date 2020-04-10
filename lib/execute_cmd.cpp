@@ -7,7 +7,9 @@ MeshStatus execute_cmd(MeshConfig* config, string cmdString) {
   Args::iterator cmd = args.begin();
   if (args.size() == 0)
     return RETURN_SUCCESS;
-  built_in_cmds(config, args);
+  if (args[0] == "exit")
+    return SIGNAL_EXIT;
+  CommandStatus stat = built_in_cmds(config, args);
   return RETURN_SUCCESS;
 }
 
