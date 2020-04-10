@@ -1,7 +1,7 @@
 #include "meshell.h"
 
-void loadConfig(MeshConfig* config) {
-  config->cwd = getNotNULLString(1, getcwd(NULL, 0));
+MeshStatus loadConfig(MeshConfig* config) {
   config->hostname = getNotNULLString(3, getenv("HOSTNAME"), getenv("HOST"), getenv("NAME"));
-  string userName = getNotNULLString(1, getenv("LOGNAME"));
+  config->username = getNotNULLString(1, getenv("LOGNAME"));
+  return RETURN_SUCCESS;
 }

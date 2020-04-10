@@ -1,29 +1,28 @@
 #include "meshell.h"
 
-vector<string> splitCommand(string cmd);
+Args splitCommand(string cmd);
 
-int execute_cmd(string cmd) {
-  vector<string> args = splitCommand(cmd);
-  vector<string>::iterator p = args.begin();
-  while (p != args.end()) {
-    cout << *p << endl;
-    p++;
-  }
-  return EXIT_SUCCESS;
+MeshStatus execute_cmd(MeshConfig* config, string cmdString) {
+  Args args = splitCommand(cmdString);
+  Args::iterator cmd = args.begin();
+  if (args.size() == 0)
+    return RETURN_SUCCESS;
+  built_in_cmds(config, args);
+  return RETURN_SUCCESS;
 }
 
-vector<string> splitCommand(string cmd) {
-  vector<string> args;
-  string::iterator wordStart, wordEnd;
-  wordStart = wordEnd = cmd.begin();
-  while (wordStart != cmd.end() && wordEnd != cmd.end()) {
-    while ((isspace(*wordStart)) && (wordStart != cmd.end()))
+Args splitCommand(string cmdString) {
+  Args args;
+  int wordStart = 0, wordEnd = 0, size = cmdString.size();
+  while (wordStart != size && wordEnd != size) {
+    while ((isspace(cmdString[wordStart])) && (wordStart != size))
       wordStart++;
     wordEnd = wordStart;
-    while ((wordEnd != cmd.end()) && (!isspace(*wordEnd)))
+    while ((wordEnd != size) && (!isspace(cmdString[wordEnd])))
       wordEnd++;
-    if (wordStart != wordEnd)
-      args.push_back(cmd.substr(wordStart - cmd.begin(), wordEnd - cmd.begin()));
+    if (wordStart != wordEnd) {
+      args.push_back(cmdString.substr(wordStart, wordEnd - wordStart));
+    }
     wordStart = wordEnd;
   }
   return args;

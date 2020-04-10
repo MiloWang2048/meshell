@@ -11,18 +11,31 @@
 // namespaces
 using namespace std;
 
-// macros
-#define SIGNAL_EXIT -1
-
 // structures
 typedef struct MeshConfig {
-  string cwd;
   string username;
   string hostname;
 } MeshConfig;
 
-// functions
-int cmd_loop(MeshConfig* config);
+// enums
+enum MeshStatus {
+  RETURN_SUCCESS,
+  RETURN_FAIL,
+  SIGNAL_EXIT,
+  CMD_CAPTURED,
+	CMD_FALLTHROUGH
+};
+
+// aliases
+typedef vector<string> Args;
+
+// utilities
 string getNotNULLString(int num, ...);
-int execute_cmd(string cmd);
-void loadConfig(MeshConfig* config);
+
+// life cycle
+MeshStatus cmd_loop(MeshConfig* config);
+MeshStatus execute_cmd(MeshConfig* config, string cmd);
+MeshStatus loadConfig(MeshConfig* config);
+
+// built in commands
+MeshStatus built_in_cmds(MeshConfig* config, Args args);
