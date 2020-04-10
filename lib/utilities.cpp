@@ -39,8 +39,10 @@ char getch(void) {
 }
 
 void splashPrint() {
-  cout << "Welcome to meshell v0.1.0."
+  cout << endl
+       << "\e[34mWelcome to meshell v0.1.0."
        << endl
-       << "Type 'help' to get some help."
+       << "Type 'help' to get some help.\e[0m"
+       << endl
        << endl;
 }
