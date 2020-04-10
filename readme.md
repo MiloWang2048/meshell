@@ -48,10 +48,10 @@ make clean
 
 - [x] cd
 - [x] ls
-- [ ] clear
-- [ ] env
+- [x] clear
+- [x] env
 - [x] echo
-- [ ] help
+- [x] help
 - [x] pause
 - [x] exit
 - [ ] env: shell

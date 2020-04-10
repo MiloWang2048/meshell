@@ -5,6 +5,7 @@
 #include <cstdarg>
 #include <cstdio>
 #include <cstdlib>
+#include <fstream>
 #include <iostream>
 #include <vector>
 
@@ -37,6 +38,7 @@ extern char** environ;
 // utilities
 string getNotNULLString(int num, ...);
 char getch(void);
+void splashPrint();
 
 // life cycle
 MeshStatus cmd_loop(MeshConfig* config);

@@ -37,3 +37,10 @@ char getch(void) {
   //printf("%c\n", buf);
   return buf;
 }
+
+void splashPrint() {
+  cout << "Welcome to meshell v0.1.0."
+       << endl
+       << "Type 'help' to get some help."
+       << endl;
+}
