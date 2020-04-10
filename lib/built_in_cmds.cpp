@@ -5,6 +5,8 @@
 CommandStatus mesh_cd(MeshConfig* config, Args args);
 CommandStatus mesh_echo(MeshConfig* config, Args args);
 CommandStatus mesh_ls(MeshConfig* config, Args args);
+CommandStatus mesh_clear(MeshConfig* config, Args args);
+CommandStatus mesh_env(MeshConfig* config, Args args);
 
 CommandStatus built_in_cmds(MeshConfig* config, Args args) {
   string cmd = args[0];
@@ -14,6 +16,10 @@ CommandStatus built_in_cmds(MeshConfig* config, Args args) {
     return mesh_echo(config, args);
   } else if (cmd == "ls") {
     return mesh_ls(config, args);
+  } else if (cmd == "clear") {
+    return mesh_clear(config, args);
+  } else if (cmd == "env") {
+    return mesh_env(config, args);
   } else if (cmd == "pause") {
     cout << "press any key to continue" << endl;
     getch();
@@ -51,5 +57,20 @@ CommandStatus mesh_ls(MeshConfig* config, Args args) {
     printf("%s\n", ptr->d_name);
   }
   closedir(dir);
+  return CMD_CAPTURED;
+}
+
+CommandStatus mesh_clear(MeshConfig* config, Args args) {
+  fflush(stdout);
+  printf("\x1b[2J\x1b[H");
+  return CMD_CAPTURED;
+}
+
+CommandStatus mesh_env(MeshConfig* config, Args args) {
+  char** p = environ;
+  while (*p) {
+    puts(*p);
+    p++;
+  }
   return CMD_CAPTURED;
 }

@@ -29,8 +29,10 @@ enum CommandStatus {
 };
 
 // aliases
-typedef vector<string>
-    Args;
+typedef vector<string> Args;
+
+// global vars
+extern char** environ;
 
 // utilities
 string getNotNULLString(int num, ...);
