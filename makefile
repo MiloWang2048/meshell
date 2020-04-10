@@ -5,6 +5,8 @@ CC = g++
 DBG = gdb
 OBJ += $(shell ls $(SRC) | egrep *.cpp | sed 's/.cpp/.o/g' | sed 's/^/$(BUILD)\//g')
 
+$(shell mkdir build)
+
 $(TAR): $(OBJ)
 	$(CC) $^ -o $(TAR)
 
