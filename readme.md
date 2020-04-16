@@ -55,7 +55,7 @@ make clean
 - [x] pause
 - [x] exit
 - [x] env: shell
-- [ ] outer program invoke
+- [x] outer program invoke
 - [ ] batch file support
 - [ ] I/O redirection
 - [ ] background execution

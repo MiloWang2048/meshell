@@ -1,10 +1,13 @@
 // c header files
+#include <sys/types.h>
+#include <sys/wait.h>
 #include <unistd.h>
 
 // cpp header files
 #include <cstdarg>
 #include <cstdio>
 #include <cstdlib>
+#include <cstring>
 #include <fstream>
 #include <iostream>
 #include <vector>
@@ -39,11 +42,14 @@ extern char** environ;
 string getNotNULLString(int num, ...);
 char getch(void);
 void splashPrint();
+char** stringVectorToCharMatrix(Args args);
+void freeCharMatrix(char** m);
 
 // life cycle
 MeshStatus cmd_loop(MeshConfig* config);
 MeshStatus execute_cmd(MeshConfig* config, string cmd);
 MeshStatus loadConfig(MeshConfig* config);
 
-// built in commands
+// command handlers
 CommandStatus built_in_cmds(MeshConfig* config, Args args);
+CommandStatus outer_cmds(MeshConfig* config, Args args);

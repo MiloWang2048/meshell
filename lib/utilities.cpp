@@ -46,3 +46,22 @@ void splashPrint() {
        << endl
        << endl;
 }
+
+char** stringVectorToCharMatrix(Args args) {
+  char** p = (char**)malloc((args.size() + 1) * sizeof(char*));
+  for (int i = 0; i < args.size(); i++) {
+    p[i] = (char*)malloc(args[i].size() + 1);
+    strcpy(p[i], args[i].c_str());
+  }
+  p[args.size()] = NULL;
+  return p;
+}
+
+void freeCharMatrix(char** m) {
+  char** p = m;
+  while (*p) {
+    free(*p);
+    p++;
+  };
+  free(m);
+}

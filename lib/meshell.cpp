@@ -11,5 +11,6 @@ int main(int argc, char** argv) {
     if (result == SIGNAL_EXIT) break;
   }
   // Perform any shutdown/cleanup.
+	delete config;
   return 0;
 }
