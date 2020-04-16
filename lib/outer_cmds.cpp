@@ -20,7 +20,8 @@ CommandStatus outer_cmds(MeshConfig* config, Args args) {
   } else {
     // parent process
     int res;
-    wait(&res);
+    //wait(&res);
+    waitpid(pid, &res, 0);
     //printf("res:%d\n", res);
     //printf("parent:%d\n", getpid());
   }
