@@ -56,6 +56,10 @@ CommandStatus mesh_ls(MeshConfig* config, Args args) {
   int i;
   const char* path = (args.size() == 1) ? getcwd(NULL, 0) : args[1].c_str();
   dir = opendir(path);
+  if (!dir) {
+    puts("directory not exist.");
+    return CMD_CAPTURED;
+  }
   while ((ptr = readdir(dir)) != NULL) {
     printf("%s\n", ptr->d_name);
   }
