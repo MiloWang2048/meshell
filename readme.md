@@ -58,6 +58,6 @@ make clean
 - [x] outer program invoke
 - [ ] batch file support
 - [ ] I/O redirection
-- [ ] background execution
+- [x] background execution
 - [ ] cmd history
 - [ ] signal intercept
