@@ -1,6 +1,6 @@
 #include "meshell.h"
 
-CommandStatus outer_cmds(MeshConfig* config, Args args) {
+CommandStatus outer_cmds(MeshConfig* config, Args& args) {
   char** argMatrix = stringVectorToCharMatrix(args);
   char** p = argMatrix;
   /*while (*p) {

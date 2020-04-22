@@ -1,7 +1,7 @@
 #include "meshell.h"
 
 int main(int argc, char** argv) {
-	splashPrint();
+  splashPrint();
   // Load config files, if any.
   MeshConfig* config = new MeshConfig;
   loadConfig(config);
@@ -11,6 +11,6 @@ int main(int argc, char** argv) {
     if (result == SIGNAL_EXIT) break;
   }
   // Perform any shutdown/cleanup.
-	delete config;
+  delete config;
   return 0;
 }

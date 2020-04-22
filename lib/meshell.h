@@ -4,8 +4,8 @@
 #include <unistd.h>
 
 // cpp header files
+#include <algorithm>
 #include <cstdarg>
-#include <cstdio>
 #include <cstdlib>
 #include <cstring>
 #include <fstream>
@@ -51,5 +51,16 @@ MeshStatus execute_cmd(MeshConfig* config, string cmd);
 MeshStatus loadConfig(MeshConfig* config);
 
 // command handlers
-CommandStatus built_in_cmds(MeshConfig* config, Args args);
-CommandStatus outer_cmds(MeshConfig* config, Args args);
+CommandStatus built_in_cmds(MeshConfig* config, Args& args);
+CommandStatus outer_cmds(MeshConfig* config, Args& args);
+
+// io redirection
+typedef struct RedirectParams {
+  ifstream* infile = NULL;
+  ofstream* outfile = NULL;
+  streambuf* stdinBackup = NULL;
+  streambuf* stdoutBackup = NULL;
+} RedirectParams;
+
+MeshStatus handle_redirect(Args& args, RedirectParams& params);
+void restore_std_stream(RedirectParams& params);

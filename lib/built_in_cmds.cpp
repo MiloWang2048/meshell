@@ -2,14 +2,14 @@
 
 #include "meshell.h"
 
-CommandStatus mesh_cd(MeshConfig* config, Args args);
-CommandStatus mesh_echo(MeshConfig* config, Args args);
-CommandStatus mesh_ls(MeshConfig* config, Args args);
-CommandStatus mesh_clear(MeshConfig* config, Args args);
-CommandStatus mesh_env(MeshConfig* config, Args args);
-CommandStatus mesh_help(MeshConfig* config, Args args);
+CommandStatus mesh_cd(MeshConfig* config, Args& args);
+CommandStatus mesh_echo(MeshConfig* config, Args& args);
+CommandStatus mesh_ls(MeshConfig* config, Args& args);
+CommandStatus mesh_clear(MeshConfig* config, Args& args);
+CommandStatus mesh_env(MeshConfig* config, Args& args);
+CommandStatus mesh_help(MeshConfig* config, Args& args);
 
-CommandStatus built_in_cmds(MeshConfig* config, Args args) {
+CommandStatus built_in_cmds(MeshConfig* config, Args& args) {
   string cmd = args[0];
   if (cmd == "cd") {
     return mesh_cd(config, args);
@@ -31,7 +31,7 @@ CommandStatus built_in_cmds(MeshConfig* config, Args args) {
     return CMD_FALLTHROUGH;
 }
 
-CommandStatus mesh_cd(MeshConfig* config, Args args) {
+CommandStatus mesh_cd(MeshConfig* config, Args& args) {
   if (args.size() == 2) {
     string errmsg = "";
     int res = chdir(args[1].c_str());
@@ -43,14 +43,14 @@ CommandStatus mesh_cd(MeshConfig* config, Args args) {
   return CMD_CAPTURED;
 }
 
-CommandStatus mesh_echo(MeshConfig* config, Args args) {
+CommandStatus mesh_echo(MeshConfig* config, Args& args) {
   for (int i = 1; i < args.size(); i++) {
     cout << args[i] << endl;
   }
   return CMD_CAPTURED;
 }
 
-CommandStatus mesh_ls(MeshConfig* config, Args args) {
+CommandStatus mesh_ls(MeshConfig* config, Args& args) {
   DIR* dir;
   struct dirent* ptr;
   int i;
@@ -67,13 +67,13 @@ CommandStatus mesh_ls(MeshConfig* config, Args args) {
   return CMD_CAPTURED;
 }
 
-CommandStatus mesh_clear(MeshConfig* config, Args args) {
+CommandStatus mesh_clear(MeshConfig* config, Args& args) {
   fflush(stdout);
   printf("\x1b[2J\x1b[H");
   return CMD_CAPTURED;
 }
 
-CommandStatus mesh_env(MeshConfig* config, Args args) {
+CommandStatus mesh_env(MeshConfig* config, Args& args) {
   char** p = environ;
   while (*p) {
     puts(*p);
@@ -82,7 +82,7 @@ CommandStatus mesh_env(MeshConfig* config, Args args) {
   return CMD_CAPTURED;
 }
 
-CommandStatus mesh_help(MeshConfig* config, Args args) {
+CommandStatus mesh_help(MeshConfig* config, Args& args) {
   cout << "Welcome to meshell v0.1.0."
        << "git repo: https://github.com/MiloWang2048/meshell" << endl
        << "command list:" << endl

@@ -2,22 +2,20 @@ TAR = mesh
 SRC = lib
 BUILD = build
 CC = g++
-DBG = gdb
 OBJ += $(shell ls $(SRC) | egrep *.cpp | sed 's/.cpp/.o/g' | sed 's/^/$(BUILD)\//g')
+# compile options
+COPTIONS = -Wreturn-type -g
+# link options
+LOPTIONS = -g
 
 $(shell mkdir build)
 
 $(TAR): $(OBJ)
-	$(CC) $^ -o $(TAR)
-
-debug: $(OBJ)
-	$(CC) -g $^ -o $(TAR)
-	$(DBG) $(TAR)
+	$(CC) $^ -o $(TAR) $(LOPTIONS)
 
 # commands
 .PHONY:
-run: $(TAR)
-	make clean
+run: clean_all $(TAR)
 	./$(TAR)
 .PHONY:
 clean:
@@ -28,4 +26,4 @@ clean_all:
 
 # modular build
 $(BUILD)/%.o: $(SRC)/%.cpp
-	$(CC) -c $^ -o $@
+	$(CC) -c $^ -o $@ $(COPTIONS)
