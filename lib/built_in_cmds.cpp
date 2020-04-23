@@ -83,17 +83,12 @@ CommandStatus mesh_env(MeshConfig* config, Args& args) {
 }
 
 CommandStatus mesh_help(MeshConfig* config, Args& args) {
-  cout << "Welcome to meshell v0.1.0."
-       << "git repo: https://github.com/MiloWang2048/meshell" << endl
-       << "command list:" << endl
-       << endl
-       << "cd < directory > - change work dir" << endl
-       << "ls [ directory ] - list files and dirs" << endl
-       << "clear - clear the terminal" << endl
-       << "env - show all env vars" << endl
-       << "echo < word > - reprint words into terminal" << endl
-       << "pause - pause meshell" << endl
-       << "exit - exit meshell" << endl
-       << "help - print this help page" << endl;
+  ifstream file("./resources/help.txt");
+  string helpText;
+  while (!file.eof()) {
+    getline(file, helpText);
+    cout << helpText << endl;
+  }
+  file.close();
   return CMD_CAPTURED;
 }

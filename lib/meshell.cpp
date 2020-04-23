@@ -9,6 +9,7 @@ int main(int argc, char** argv) {
   while (1) {
     int result = cmd_loop(config);
     if (result == SIGNAL_EXIT) break;
+    if (cin.fail() || cin.eof()) break;
   }
   // Perform any shutdown/cleanup.
   delete config;

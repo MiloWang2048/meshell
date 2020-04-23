@@ -1,0 +1,17 @@
+Welcome to meshell v1.0.
+git repo: https://github.com/MiloWang2048/meshell
+command list:
+
+cd < directory > - change work dir
+ls [ directory ] - list files and dirs
+clear - clear the terminal
+env - show all env vars
+echo < word > - reprint words into terminal
+pause - pause meshell
+exit - exit meshell
+<command> > <filename> - redirect stdout to file
+	(built-in commands only)
+<command> < <filename> - redirect stdin from file
+	(built-in commands only)
+<command> & - execute in background
+help - print this help page
