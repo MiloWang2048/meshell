@@ -48,7 +48,9 @@ void freeCharMatrix(char** m);
 // life cycle
 MeshStatus cmd_loop(MeshConfig* config);
 MeshStatus execute_cmd(MeshConfig* config, string cmd);
-MeshStatus loadConfig(MeshConfig* config);
+MeshStatus load_config(MeshConfig* config);
+MeshStatus cmd_sequence(MeshConfig* config, Args& args);
+MeshStatus bg_cmd_sequence(MeshConfig* config, Args& args);
 
 // command handlers
 CommandStatus built_in_cmds(MeshConfig* config, Args& args);

@@ -4,7 +4,7 @@ int main(int argc, char** argv) {
   splashPrint();
   // Load config files, if any.
   MeshConfig* config = new MeshConfig;
-  loadConfig(config);
+  load_config(config);
   // Run command loop.
   while (1) {
     int result = cmd_loop(config);

@@ -2,7 +2,7 @@
 
 void set_shell_env();
 
-MeshStatus loadConfig(MeshConfig* config) {
+MeshStatus load_config(MeshConfig* config) {
   set_shell_env();
   config->hostname = getNotNULLString(3, getenv("HOSTNAME"), getenv("HOST"), getenv("NAME"));
   config->username = getNotNULLString(1, getenv("LOGNAME"));

@@ -41,7 +41,7 @@ MeshStatus handle_redirect(Args& args, RedirectParams& params) {
   } else {
     params.outfile = NULL;
   }
-  return SIGNAL_EXIT;
+  return RETURN_SUCCESS;
 }
 
 void restore_std_stream(RedirectParams& params) {
